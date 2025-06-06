@@ -1,0 +1,55 @@
+---
+// src/components/ProsConsList.astro
+export interface Props {
+  type: 'pros' | 'cons';
+  items: string[];
+}
+
+const { type, items } = Astro.props;
+
+const title = type === 'pros' ? 'Puntos Positivos' : 'Puntos Negativos';
+const listClass = type === 'pros' ? 'pros-list' : 'cons-list';
+---
+<div class="pros-cons-section">
+  <h3 class={type === 'pros' ? 'pros-title' : 'cons-title'}>{title}</h3>
+  <ul class={listClass}>
+    {items.map((item) => (
+      <li>
+        <span class="icon">{type === 'pros' ? '✅' : '❌'}</span> {item}
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .pros-cons-section {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  .pros-title {
+    color: #28a745; /* Verde para Pros */
+    font-size: 1.3em;
+    margin-top: 0;
+  }
+  .cons-title {
+    color: #dc3545; /* Rojo para Contras */
+    font-size: 1.3em;
+    margin-top: 0;
+  }
+  .pros-list, .cons-list {
+    list-style: none; /* Quita los puntos de la lista */
+    padding: 0;
+  }
+  .pros-list li, .cons-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+  }
+  .icon {
+    margin-right: 10px;
+    font-size: 1.2em;
+    line-height: 1; /* Alinea el icono con el texto */
+  }
+</style>

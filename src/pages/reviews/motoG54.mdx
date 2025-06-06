@@ -1,0 +1,104 @@
+---
+layout: ../../layouts/BaseLayout.astro
+title: "Reseña del Smartphone Moto G54"
+description: "Una reseña completa del Moto G54: rendimiento, cámara y batería."
+author: "Ichikuro"
+date: "2025-06-05"
+rating: 4.3
+product_image: "/assets/moto-g54.jpg"
+specs:
+  - CPU: "MediaTek Dimensity 7020"
+  - RAM: "8GB"
+  - Almacenamiento: "128GB"
+  - Pantalla: "6.5 pulgadas IPS LCD, 120Hz"
+  - Cámara: "50MP Principal, 2MP Macro"
+  - Batería: "5000mAh"
+pros:
+  - "Buen rendimiento para su gama"
+  - "Pantalla fluida de 120Hz"
+  - "Buena duración de batería"
+  - "Precio accesible"
+cons:
+  - "Cámara secundaria poco útil"
+  - "Carga rápida limitada a 15W"
+---
+
+import { Image } from 'astro:assets';
+import MotoFront from '../../assets/moto-g54-front.png';
+import MotoCamera from '../../assets/moto-g54-camera-sample.jpg';
+import SpecsTable from '../../components/SpecsTable.astro';
+import ProsConsList from '../../components/ProsConsList.astro';
+
+export const specs = [
+  { CPU: "MediaTek Dimensity 7020" },
+  { RAM: "8GB" },
+  { Almacenamiento: "128GB" },
+  { Pantalla: "6.5 pulgadas IPS LCD, 120Hz" },
+  { Cámara: "50MP Principal, 2MP Macro" },
+  { Batería: "5000mAh" }
+];
+
+export const pros = [
+  "Buen rendimiento para su gama",
+  "Pantalla fluida de 120Hz",
+  "Buena duración de batería",
+  "Precio accesible"
+];
+
+export const cons = [
+  "Cámara secundaria poco útil",
+  "Carga rápida limitada a 15W"
+];
+
+# Reseña del Smartphone Moto G54
+
+Hoy analizamos a fondo el **Moto G54**, un teléfono de gama media que apunta a ofrecer un buen equilibrio entre precio y prestaciones. ¿Cumple con lo que promete? ¡Vamos a descubrirlo!
+
+## Diseño y Construcción
+
+El Moto G54 presenta un diseño sobrio pero funcional. Su cuerpo de plástico tiene un acabado mate que ayuda a evitar huellas y ofrece buen agarre. No es el más llamativo, pero sí resistente y cómodo en el uso diario.
+
+<Image
+  src={MotoFront}
+  alt="Moto G54 vista frontal"
+  width={400}
+  height={600}
+  quality={80}
+  format="webp"
+  loading="lazy"
+/>
+
+## Rendimiento y Software
+
+El Moto G54 incorpora el procesador **MediaTek Dimensity 7020**, acompañado por 8GB de RAM. Para tareas cotidianas, redes sociales y juegos ligeros, se comporta con soltura. Corre **Android 13** casi puro, lo que se traduce en una experiencia limpia y sin bloatware.
+
+## Cámara
+
+Cuenta con una cámara principal de 50MP que da buenos resultados con buena luz. El detalle y el color son aceptables para su gama. La cámara macro de 2MP, en cambio, tiene utilidad limitada y calidad baja.
+
+<Image
+  src={MotoCamera}
+  alt="Ejemplo de foto de cámara del Moto G54"
+  width={600}
+  height={400}
+  quality={85}
+  format="webp"
+  loading="lazy"
+/>
+
+## Batería
+
+Uno de sus puntos fuertes: la batería de 5000mAh ofrece fácilmente más de un día completo de autonomía con uso normal. La carga rápida de 15W es decente, aunque algo lenta comparada con otros modelos actuales.
+
+<SpecsTable specs={specs} />
+
+<ProsConsList type="pros" items={pros} />
+<ProsConsList type="cons" items={cons} />
+
+## Conclusión
+
+El **Moto G54** es una opción sólida dentro de la gama media. No es un teléfono que impresione en ningún aspecto específico, pero hace muchas cosas bien por un precio razonable. Ideal para quienes buscan un móvil confiable sin gastar demasiado.
+
+---
+
+*Nota: Esta reseña se basa en pruebas realizadas durante una semana de uso real.*

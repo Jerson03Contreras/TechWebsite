@@ -1,0 +1,110 @@
+---
+// src/components/ReviewCard.astro
+export interface Props {
+  title: string;
+  image: string; // Ruta de la imagen (ej: "/assets/moto-g54.jpg")
+  link: string;  // La URL a la reseña completa (ej: "/reviews/motoG54")
+  description: string; // Una descripción corta para la tarjeta
+}
+
+const { title, image, link, description } = Astro.props;
+---
+
+<div class="review-card">
+  <a href={link} class="card-link">
+    <img src={image} alt={`Imagen de ${title}`} class="card-image" />
+    <div class="card-content">
+      <h3 class="card-title">{title}</h3>
+      <p class="card-description">{description}</p>
+      <span class="read-more">Leer reseña &rarr;</span>
+    </div>
+  </a>
+</div>
+
+<style>
+  .review-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease-in-out;
+    display: flex; /* Para que la imagen y el contenido estén uno al lado del otro */
+    flex-direction: column; /* Por defecto, se apilan en móvil */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-width: 760px; /* Limita el ancho máximo para la tarjeta individual */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .review-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex; /* Permite que imagen y contenido fluyan */
+    flex-direction: column; /* Pila por defecto */
+    height: 100%; /* Asegura que el enlace ocupe todo el espacio de la tarjeta */
+  }
+
+  .card-image {
+    width: 100%;
+    height: 200px; /* Altura fija para las imágenes */
+    object-fit: cover; /* Recorta la imagen para que encaje */
+    display: block;
+  }
+
+  .card-content {
+    padding: 15px;
+    flex-grow: 1; /* Permite que el contenido ocupe el espacio restante */
+  }
+
+  .card-title {
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #2c3e50;
+  }
+
+  .card-description {
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+
+  .read-more {
+    display: inline-block;
+    color: #3498db;
+    font-weight: bold;
+    margin-top: auto; /* Empuja "Leer reseña" hacia abajo si hay espacio */
+  }
+
+  .read-more:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries para diseño responsivo */
+  @media (min-width: 600px) {
+    .review-card {
+      flex-direction: row; /* En pantallas más grandes, imagen al lado del contenido */
+      max-height: 200px; /* Limita la altura de la tarjeta */
+    }
+
+    .card-link {
+      flex-direction: row;
+    }
+
+    .card-image {
+      width: 30%; /* La imagen ocupa el 30% del ancho de la tarjeta */
+      height: 200px; /* Mantén la altura fija */
+    }
+
+    .card-content {
+      width: 70%; /* El contenido ocupa el 70% restante */
+      padding: 20px;
+    }
+  }
+</style>
