@@ -2,21 +2,25 @@
 // src/pages/index.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ReviewCard from '../components/ReviewCard.astro'; // ¡Importa el nuevo componente ReviewCard!
+const allReviews = await Astro.glob('./reviews/*.mdx');
 ---
-<BaseLayout title="Inicio - Tu Sitio de Reseñas Tech" description="Bienvenido a tu sitio de reseñas de tecnología. Encuentra las mejores opiniones sobre los últimos gadgets.">
+<BaseLayout title="Inicio - Tu Sitio de Reseñas Tech" description="...">
   <main>
     <h1>¡Bienvenido a Mi Sitio de Reseñas Tech!</h1>
-    <p>Aquí encontrarás las reseñas más detalladas y honestas de los últimos gadgets y dispositivos.</p>
+    <p>Aquí encontrarás las reseñas más detalladas...</p>
 
-    <h2>Nuestras Reseñas Destacadas</h2>
+    <h2>Últimas Reseñas</h2>
 
-    <ReviewCard
-      title="Reseña del Smartphone Moto G54"
-      image="/assets/moto-g54.jpg" 
-      link="/reviews/motoG54"
-      description="Descubre si el Moto G54 es el teléfono de gama media ideal para ti. Analizamos su rendimiento, cámaras y duración de batería."
-    />
-
-    <p>¡Explora nuestras secciones y encuentra tu próximo dispositivo!</p>
+    <div class="reviews-grid">
+      {/* 2. Recorre el array de reseñas y renderiza una tarjeta para cada una */}
+      {allReviews.map(review => (
+        <ReviewCard
+          title={review.frontmatter.title}
+          image={review.frontmatter.product_image}
+          link={review.url}
+          description={review.frontmatter.description}
+        />
+      ))}
+    </div>
   </main>
 </BaseLayout>

@@ -26,29 +26,12 @@ cons:
 import { Image } from 'astro:assets';
 import MotoFront from '../../assets/moto-g54-front.png';
 import MotoCamera from '../../assets/moto-g54-camera-sample.jpg';
+import ProductImage from '../../assets/moto-g54.jpg';
 import SpecsTable from '../../components/SpecsTable.astro';
 import ProsConsList from '../../components/ProsConsList.astro';
 
-export const specs = [
-  { CPU: "MediaTek Dimensity 7020" },
-  { RAM: "8GB" },
-  { Almacenamiento: "128GB" },
-  { Pantalla: "6.5 pulgadas IPS LCD, 120Hz" },
-  { Cámara: "50MP Principal, 2MP Macro" },
-  { Batería: "5000mAh" }
-];
 
-export const pros = [
-  "Buen rendimiento para su gama",
-  "Pantalla fluida de 120Hz",
-  "Buena duración de batería",
-  "Precio accesible"
-];
 
-export const cons = [
-  "Cámara secundaria poco útil",
-  "Carga rápida limitada a 15W"
-];
 
 # Reseña del Smartphone Moto G54
 
@@ -90,10 +73,9 @@ Cuenta con una cámara principal de 50MP que da buenos resultados con buena luz.
 
 Uno de sus puntos fuertes: la batería de 5000mAh ofrece fácilmente más de un día completo de autonomía con uso normal. La carga rápida de 15W es decente, aunque algo lenta comparada con otros modelos actuales.
 
-<SpecsTable specs={specs} />
-
-<ProsConsList type="pros" items={pros} />
-<ProsConsList type="cons" items={cons} />
+<SpecsTable specs={frontmatter.specs} />
+<ProsConsList type="pros" items={frontmatter.pros} />
+<ProsConsList type="cons" items={frontmatter.cons} />
 
 ## Conclusión
 

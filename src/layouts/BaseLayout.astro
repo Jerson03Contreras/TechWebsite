@@ -74,7 +74,12 @@ const { title, description = 'Tu sitio de reseñas de tecnología.' } = Astro.pr
     <slot />
   </main>
   <footer>
-    <p>&copy; {new Date().getFullYear()} Mi Sitio de Reseñas Tech. Todos los derechos reservados.</p>
-  </footer>
+  <nav>
+    <a href="/acerca-de">Acerca de Nosotros</a> |
+    <a href="/contacto">Contacto</a> |
+    <a href="/politica-de-privacidad">Política de Privacidad</a>
+  </nav>
+  <p>&copy; {new Date().getFullYear()} Mi Sitio de Reseñas Tech. Todos los derechos reservados.</p>
+</footer>
 </body>
 </html>
