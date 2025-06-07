@@ -1,0 +1,82 @@
+---
+title: "Reseña del Smartphone Samsung Galaxy A54"
+description: "Una reseña completa del Samsung Galaxy A54: pantalla AMOLED, rendimiento y cámaras."
+author: "Ichikuro"
+date: 2025-06-06
+rating: 4.5
+product_image: "../../assets/samsung-a54.jpg"
+specs:
+  - CPU: "Exynos 1380"
+  - RAM: "8GB"
+  - Almacenamiento: "128GB"
+  - Pantalla: "6.4 pulgadas Super AMOLED, 120Hz"
+  - Cámara: "50MP Principal, 12MP Ultra Gran Angular, 5MP Macro"
+  - Batería: "5000mAh, carga rápida 25W"
+pros:
+  - "Excelente pantalla AMOLED de 120Hz"
+  - "Buen desempeño general con Exynos 1380"
+  - "Diseño premium con resistencia IP67"
+  - "Buena cámara principal"
+cons:
+  - "Algo pesado"
+  - "Macro y gran angular con calidad limitada"
+---
+
+import { Image } from "astro:assets";
+import A54Front from "../../assets/samsung-a54-front.png";
+import A54Camera from "../../assets/samsung-a54-camera-sample.jpg";
+import ProductImage from "../../assets/samsung-a54.jpg";
+import SpecsTable from "../../components/SpecsTable.astro";
+import ProsConsList from "../../components/ProsConsList.astro";
+
+# Reseña del Smartphone Samsung Galaxy A54
+
+El **Galaxy A54** llega como una de las apuestas más completas de Samsung en la gama media. ¿Vale la pena? Vamos a verlo.
+
+## Diseño y Pantalla
+
+Con un diseño que recuerda a los modelos premium, el Galaxy A54 se siente sólido y elegante. Su pantalla **Super AMOLED de 6.4 pulgadas y 120Hz** es uno de sus mayores atractivos: colores vivos, brillo alto y fluidez.
+
+<Image
+  src={A54Front}
+  alt="Galaxy A54 vista frontal"
+  width={400}
+  height={600}
+  quality={80}
+  format="webp"
+  loading="lazy"
+/>
+
+## Rendimiento y Experiencia
+
+Gracias al **Exynos 1380** y 8GB de RAM, se comporta muy bien en el día a día. Multitarea fluida, juegos exigentes en calidad media-alta y **One UI 5.1** sobre Android 13 hacen la experiencia muy completa.
+
+## Cámara
+
+La cámara principal de 50MP entrega imágenes detalladas y con buen rango dinámico. El ultra gran angular y el macro son útiles pero no destacan por su calidad.
+
+<Image
+  src={A54Camera}
+  alt="Ejemplo de foto de cámara del Galaxy A54"
+  width={600}
+  height={400}
+  quality={85}
+  format="webp"
+  loading="lazy"
+/>
+
+## Batería
+
+Con **5000mAh**, es fácil alcanzar un día y medio de uso. La carga rápida de **25W** mejora respecto a generaciones anteriores, aunque sigue por detrás de rivales chinos.
+
+<SpecsTable specs={frontmatter.specs} />
+<ProsConsList type="pros" items={frontmatter.pros} />
+<ProsConsList type="cons" items={frontmatter.cons} />
+
+## Conclusión
+
+El **Samsung Galaxy A54** ofrece un excelente equilibrio entre diseño, pantalla y experiencia general. Es ideal para quienes priorizan calidad de pantalla y una experiencia Android pulida.
+
+---
+
+_Nota: Pruebas realizadas durante 10 días de uso cotidiano._

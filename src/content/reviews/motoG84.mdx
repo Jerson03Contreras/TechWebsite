@@ -1,11 +1,10 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 title: "Reseña del Smartphone Moto G84"
 description: "Analizamos el Moto G84, su pantalla pOLED, cámara con OIS y rendimiento. ¿Vale la pena en la gama media?"
 author: "Ichikuro"
-date: "2025-06-06"
+date: 2025-06-06
 rating: 4.5
-product_image: "/assets/moto-g84.jpg"
+product_image: "../../assets/moto-g84.jpg"
 specs:
   - CPU: "Qualcomm Snapdragon 695 5G"
   - RAM: "12GB"
@@ -22,31 +21,51 @@ cons:
   - "El procesador Snapdragon 695 se queda corto para juegos exigentes"
   - "Sin carga inalámbrica"
 ---
-import { Image } from 'astro:assets';
-import SpecsTable from '../../components/SpecsTable.astro';
-import ProsConsList from '../../components/ProsConsList.astro';
-import MotoG84Front from '../../assets/moto-g84-front.png'; // <-- ¡Recuerda añadir esta imagen!
-import MotoG84Camera from '../../assets/moto-g84-camera-sample.jpg'; // <-- ¡Y esta también!
 
+import { Image } from "astro:assets";
+import SpecsTable from "../../components/SpecsTable.astro";
+import ProsConsList from "../../components/ProsConsList.astro";
+import MotoG84Front from "../../assets/moto-g84-front.png"; // <-- ¡Recuerda añadir esta imagen!
+import MotoG84Camera from "../../assets/moto-g84-camera-sample.jpg"; // <-- ¡Y esta también!
 
 # Reseña del Smartphone Moto G84
 
 El **Moto G84** llega para competir fuerte en la gama media, presumiendo de características que normalmente vemos en teléfonos más caros. ¿Es oro todo lo que reluce? Lo hemos probado a fondo.
 
 ## Diseño y Pantalla
+
 El primer impacto es excelente. Su acabado en cuero vegano (en algunos colores) y su delgadez lo hacen sentir muy premium. La pantalla **pOLED de 6.55 pulgadas** es sin duda la estrella: colores vibrantes, negros puros y una fluidez de 120Hz que enamora.
 
-<Image src={MotoG84Front} alt="Moto G84 vista frontal" width={400} height={600} quality={80} format="webp" />
+<Image
+  src={MotoG84Front}
+  alt="Moto G84 vista frontal"
+  width={500}
+  height={500}
+  quality={80}
+  format="webp"
+  loading="lazy"
+/>
 
 ## Rendimiento
+
 Aquí encontramos su punto más controversial. El **Snapdragon 695**, si bien es solvente para el día a día y redes sociales, sufre con juegos de alta demanda gráfica. Los **12GB de RAM** ayudan a que la multitarea sea muy fluida, pero no pueden hacer magia con la potencia gráfica del chip.
 
 ## Cámara
+
 La cámara principal de **50MP con Estabilización Óptica de Imagen (OIS)** es un gran acierto. Las fotos diurnas son nítidas, con buen color y el OIS ayuda enormemente en condiciones de poca luz y al grabar video. El gran angular de 8MP es versátil y cumple bien su función.
 
-<Image src={MotoG84Camera} alt="Ejemplo de foto de cámara del Moto G84" width={600} height={400} quality={85} format="webp" />
+<Image
+  src={MotoG84Camera}
+  alt="Ejemplo de foto de cámara del Moto G84"
+  width={450}
+  height={450}
+  quality={95}
+  format="webp"
+  loading="lazy"
+/>
 
 ## Batería y Conclusión
+
 La batería de 5000mAh rinde todo el día sin problemas, y la carga de 30W permite recuperar energía rápidamente.
 
 <SpecsTable specs={frontmatter.specs} />

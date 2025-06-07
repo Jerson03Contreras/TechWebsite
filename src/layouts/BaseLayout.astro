@@ -17,129 +17,178 @@ const { title, description = 'Tu sitio de reseñas de tecnología.' } = Astro.pr
   <meta name="description" content={description} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <style is:global>
-    body {
-      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+  /* --- ESTILOS GLOBALES Y DE ESCRITORIO --- */
+  body {
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background: #23272f;
+    color: #fff;
+    padding: 22px 20px 10px 20px;
+    text-align: center;
+    border-bottom: 3px solid #3498db;
+    box-shadow: 0 2px 12px rgba(44,62,80,0.10);
+    border-radius: 0 0 18px 18px;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 2.1em;
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+  header nav {
+    margin-top: 14px;
+  }
+  header nav a {
+    color: #9ad1ff;
+    margin: 0 18px;
+    font-weight: 500;
+    font-size: 1.08em;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+  }
+  header nav a:hover {
+    border-bottom-color: #3498db;
+    background: #2c3e50;
+    color: #fff;
+    text-decoration: none;
+  }
+  main {
+    max-width: 900px;
+    width: 90%; /* Usamos porcentaje para mayor flexibilidad */
+    margin: 32px auto 40px auto;
+    padding: 32px 24px;
+    background-color: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(44,62,80,0.08);
+    flex: 1;
+  }
+  main img { /* Regla clave para que imágenes en reseñas no se desborden */
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  footer {
+    background: #23272f;
+    color: #e0e0e0;
+    text-align: center;
+    padding: 28px 20px 18px 20px;
+    border-top: 3px solid #3498db;
+    box-shadow: 0 -2px 12px rgba(44,62,80,0.10);
+    border-radius: 18px 18px 0 0;
+  }
+  footer nav a {
+    color: #9ad1ff;
+    margin: 5px 10px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+  }
+  footer nav a:hover {
+    background: #3498db;
+    color: #fff;
+    text-decoration: none;
+  }
+  footer p {
+    margin: 12px 0 0 0;
+    font-size: 0.98em;
+    color: #b0b8c1;
+  }
+
+  /* --- ESTILOS PARA TARJETAS Y GRID (Ahora globales) --- */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid #e1e4e8;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  }
+  .card a {
+    text-decoration: none;
+    color: inherit;
+  }
+  .card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+  .card-content {
+    padding: 15px 20px 20px 20px;
+  }
+  .card-content h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.25em;
+  }
+  .card-content p {
+    margin-bottom: 0;
+    font-size: 0.95em;
+    color: #555;
+  }
+  
+  /* --- MEDIA QUERIES PARA DISEÑO RESPONSIVO --- */
+  /* Para tablets y móviles grandes (hasta 768px) */
+  @media (max-width: 768px) {
+    main {
+      width: auto; /* Dejamos que ocupe todo el ancho disponible */
+      margin: 20px 15px;
+      padding: 20px 18px;
     }
-    header {
-      background: #23272f;
-      color: #fff;
-      padding: 22px 0 10px 0;
-      text-align: center;
-      border-bottom: 3px solid #3498db;
-      box-shadow: 0 2px 12px rgba(44,62,80,0.10);
-      border-radius: 0 0 18px 18px;
+    .reviews-grid {
+      /* Apilamos las tarjetas en una sola columna */
+      grid-template-columns: 1fr;
     }
+  }
+
+  /* Para móviles (hasta 600px) */
+  @media (max-width: 600px) {
     header h1 {
+      font-size: 1.8em;
+    }
+    header, footer {
+      /* Quitamos los bordes redondeados en móvil para que ocupe todo el ancho */
+      border-radius: 0;
+    }
+    header nav, footer nav {
+      /* Permitimos que los enlaces del menú se envuelvan si no caben */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+    }
+    header nav a, footer nav a {
       margin: 0;
-      font-size: 2.1em;
-      letter-spacing: 1px;
-      font-weight: 700;
-      color: #fff;
-      text-shadow: 0 2px 8px rgba(44,62,80,0.10);
-    }
-    header nav {
-      margin-top: 14px;
-    }
-    header nav a {
-      color: #9ad1ff;
-      margin: 0 18px;
-      font-weight: 500;
-      font-size: 1.08em;
-      letter-spacing: 0.2px;
-      padding: 6px 10px 6px 10px;
-      border-radius: 6px;
-      border-bottom: 2px solid transparent;
-      transition: 
-        border 0.2s,
-        background 0.2s,
-        color 0.2s;
-      display: inline-block;
-    }
-    header nav a:hover {
-      border-bottom: 2px solid #3498db;
-      background: #2c3e50;
-      color: #fff;
     }
     main {
-      max-width: 900px;
-      margin: 32px auto 40px auto;
-      padding: 32px 24px;
-      background-color: #fff;
-      border-radius: 14px;
-      box-shadow: 0 4px 16px rgba(44,62,80,0.08);
-      flex: 1;
+      margin: 15px 0;
+      border-radius: 0; /* Quitamos bordes para un look 'full-width' */
     }
-    h1, h2, h3 {
-      color: #2c3e50;
-      letter-spacing: 0.5px;
-    }
-    a {
-      color: #3498db;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    a:hover {
-      color: #217dbb;
-      text-decoration: underline;
-    }
-    footer {
-      background: #23272f;
-      color: #e0e0e0;
-      text-align: center;
-      padding: 28px 0 18px 0;
-      margin-top: auto;
-      font-size: 1em;
-      border-top: 3px solid #3498db;
-      box-shadow: 0 -2px 12px rgba(44,62,80,0.10);
-      border-radius: 18px 18px 0 0;
-    }
-    footer nav {
-      margin-bottom: 10px;
-    }
-    footer nav a {
-      color: #9ad1ff;
-      margin: 0 14px;
-      font-weight: 500;
-      font-size: 1em;
-      padding: 6px 10px;
-      border-radius: 6px;
-      transition: 
-        background 0.2s,
-        color 0.2s;
-      display: inline-block;
-    }
-    footer nav a:hover {
-      background: #3498db;
-      color: #fff;
-      text-decoration: none;
-    }
-    footer p {
-      margin: 12px 0 0 0;
-      font-size: 0.98em;
-      color: #b0b8c1;
-    }
-    @media (max-width: 600px) {
-      main {
-        padding: 12px 4vw;
-      }
-      header, footer {
-        padding-left: 0;
-        padding-right: 0;
-        border-radius: 0;
-      }
-      header nav a, footer nav a {
-        margin: 0 6px;
-        font-size: 0.98em;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
   <header>

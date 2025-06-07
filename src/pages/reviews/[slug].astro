@@ -1,0 +1,26 @@
+---
+// src/pages/reviews/[slug].astro
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// Esta función le dice a Astro qué páginas crear en tiempo de compilación
+export async function getStaticPaths() {
+  const allReviews = await getCollection("reviews");
+  return allReviews.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+// Obtenemos la reseña específica para esta página
+const { entry } = Astro.props;
+const { Content } = await entry.render(); // El contenido MDX renderizado
+---
+
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  frontmatter={entry.data}
+>
+  <Content />
+</BaseLayout>
